@@ -16,9 +16,16 @@ export default class GoogleTranslator extends Translator {
   }
 
   async fetchGoogleTranslation(value: string): Promise<string> {
+    // const response = await fetch(
+    //   `https://translation.googleapis.com/language/translate/v2?source=${this.from}&target=${this.to}&key=${this.apiKey}&q=${value}&format=text`
+    // );
+
     const response = await fetch(
-      `https://translation.googleapis.com/language/translate/v2?source=${this.from}&target=${this.to}&key=${this.apiKey}&q=${value}&format=text`
+      `https://google-translate1.p.rapidapi.com/language/translate/v2?source=${this.from}&target=${this.to}&key=${this.apiKey}&q=${value}&format=text`
     );
+
+
+
     const {data} = await response.json();
 
     return data.translations[0].translatedText;
